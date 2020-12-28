@@ -1,0 +1,30 @@
+### list users
+GET http://localhost:3000/coffees
+Content-Type: application/json
+### list user
+GET http://localhost:3000/coffees/1
+Content-Type: application/json
+### nuevo
+POST http://localhost:3000/coffees
+Content-Type: application/json
+
+  {
+    "id": 55,
+    "name": "344",
+    "brand": "la peor",
+    "mierda": true,
+    "flavors": [
+      "manzanilla",
+      "narnaja"
+    ]
+  }
+###
+PATCH http://localhost:3000/coffees/1
+Content-Type: application/json
+
+{
+    "name": "leche sin cafe"
+}
+###
+DELETE http://localhost:3000/coffees/2
+Content-Type: application/json
