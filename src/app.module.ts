@@ -13,6 +13,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
     username: 'ramiro',
     password: 'ramiro',
     database: 'nest2',
+    // entities: [Coffee],
+    // entities: ["src/**/**/**.entity{.ts,.js}"],
     autoLoadEntities: true,
     synchronize: true,
   })],

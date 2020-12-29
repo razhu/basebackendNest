@@ -2,28 +2,26 @@
 GET http://localhost:3000/coffees
 Content-Type: application/json
 ### list user
-GET http://localhost:3000/coffees/1
+GET http://localhost:3000/coffees/3
 Content-Type: application/json
 ### nuevo
 POST http://localhost:3000/coffees
 Content-Type: application/json
 
   {
-    "id": 55,
-    "name": "344",
-    "brand": "la peor",
-    "mierda": true,
+    "name": "api con llajwa",
+    "brand": "copacabana",
     "flavors": [
       "manzanilla",
       "narnaja"
     ]
   }
 ###
-PATCH http://localhost:3000/coffees/1
+PATCH http://localhost:3000/coffees/3
 Content-Type: application/json
 
 {
-    "name": "leche sin cafe"
+    "name": "lauraaa"
 }
 ###
 DELETE http://localhost:3000/coffees/2
