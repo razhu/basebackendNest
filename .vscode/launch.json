@@ -20,7 +20,8 @@
             "envFile": "${workspaceFolder}/.env",
             "cwd": "${workspaceRoot}",
             "console": "integratedTerminal",
-            "protocol": "inspector"
+            "protocol": "inspector",
+            "runtimeExecutable": "/Users/ramiro/.nvm/versions/node/v14.15.0/bin/node"
         }
     ]
   }
