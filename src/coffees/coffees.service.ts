@@ -12,12 +12,18 @@ export class CoffeesService {
         private readonly coffeeRepository: Repository<Coffee>
     ){}
     findAll() {
-        return this.coffeeRepository.find()
+        return this.coffeeRepository.find(
+            {
+                relations: ['flavors']
+            }
+        )
     }
     async findOne(id: string) {
         // throw 'random error!!!'
-        let coffeeFound = await this.coffeeRepository.findOne(id);
-        if (!coffeeFound) {
+        let coffeeFound = await this.coffeeRepository.findOne(id, {
+            relations: ['flavors']
+        });
+        if (!coffeeFound) { 
             // throw new HttpException (`no se encontro cafe con id ${id}`, HttpStatus.NOT_FOUND)
             throw new NotFoundException (`no se encontro cafe con id ${id}`)
         }

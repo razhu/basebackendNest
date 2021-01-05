@@ -9,8 +9,8 @@ POST http://localhost:3000/coffees
 Content-Type: application/json
 
   {
-    "name": "flaca alta 2",
-    "brand": "copacabana",
+    "name": "gordo chato 2",
+    "brand": "pollos copacabana",
     "flavors": [
       "manzanilla",
       "narnaja"
