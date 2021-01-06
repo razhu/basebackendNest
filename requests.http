@@ -1,6 +1,10 @@
 ### list users
 GET http://localhost:3000/coffees
 Content-Type: application/json
+
+### list users
+GET http://localhost:3000/coffees?offset=2&limit=2
+Content-Type: application/json
 ### list user
 GET http://localhost:3000/coffees/3
 Content-Type: application/json
