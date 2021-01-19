@@ -18,8 +18,6 @@ import { ConfigModule } from '@nestjs/config'
     username: process.env.DATABASE_USER,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
-    // entities: [Coffee],
-    // entities: ["src/**/**/**.entity{.ts,.js}"],
     autoLoadEntities: true,
     synchronize: true,
   }), CoffeeRatingModule],
