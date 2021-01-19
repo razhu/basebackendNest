@@ -12,7 +12,8 @@ class ConfigService {}
 class DevelopmentConfigService {}
 class ProductionConfigService {}
 @Module({
-    imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event]), ConfigModule],
+    imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event]), 
+    ConfigModule ],
     controllers: [CoffeesController],
     providers: [    
         CoffeesService,
