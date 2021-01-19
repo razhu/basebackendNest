@@ -23,7 +23,8 @@ export class CoffeesService {
         // @Inject(COFFEE_BRANDS) coffeeBrands: string[],
     ){
         // console.log(coffeeBrands);
-        console.log('gettin data for config stuff ', this.configService.get<string>('DATABASE_HOST'));
+        // console.log('gettin data for config stuff ', this.configService.get<string>('DATABASE_HOST'));
+        console.log('gettin data for config stuff ', this.configService.get('database.host'));
     }
     findAll(paginationQuery: PaginationQueryDto) {
         const {limit, offset } = paginationQuery
