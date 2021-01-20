@@ -5,6 +5,7 @@ import { UpdateCoffeeDto } from './dto/update-coffee-dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
 import { Public } from 'src/common/decorators/public.decorator';
 import { Protocol } from 'src/common/decorators/protocol.decorator';
+import {ApiForbiddenResponse} from '@nestjs/swagger'
 @UsePipes(ValidationPipe)
 @Controller('coffees')
 export class CoffeesController {
@@ -13,6 +14,8 @@ export class CoffeesController {
     // @UsePipes(ValidationPipe) // it can be added on a single method
     // @SetMetadata('isPublic', true) // its ok but will be using customed annotation
 
+    // @ApiResponse({status: 403, description: 'Forbidden'})
+    @ApiForbiddenResponse({ description: 'Forbidden'})
     @Public()
     @Get()
     async findAll(
