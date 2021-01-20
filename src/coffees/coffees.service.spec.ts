@@ -13,6 +13,7 @@ const createMockRepository = <T = any>(): MockRepository<T> => ({
 
 describe('CoffeesService', () => {
    let service: CoffeesService;
+   let coffeREpository:
 
    beforeEach(async () => {
      const module: TestingModule = await Test.createTestingModule({
