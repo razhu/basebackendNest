@@ -6,18 +6,18 @@ Content-Type: application/json
 GET http://localhost:3000/coffees?offset=2&limit=2
 Content-Type: application/json
 ### list user
-GET http://localhost:3000/coffees/3
+GET http://localhost:3000/coffees/-7
 Content-Type: application/json
 ### nuevo
 POST http://localhost:3000/coffees
 Content-Type: application/json
 
   {
-    "name": "gordo chato 3",
-    "brand": "pollos copacabana",
+    "name": "cafe copacabana",
+    "brand": "copacabana coroporation",
     "flavors": [
-      "gato",
-      "perro"
+      "nacional",
+      "importado"
     ]
   }
 ###

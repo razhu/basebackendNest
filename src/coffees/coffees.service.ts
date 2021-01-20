@@ -1,19 +1,31 @@
-import { HttpException, HttpStatus, Injectable, NotFoundException } from '@nestjs/common';
+import { HttpException, HttpStatus, Inject, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Connection } from 'typeorm';
 import { CreateCoffeeDto } from './dto/create-coffee-dto';
 import { UpdateCoffeeDto } from './dto/update-coffee-dto';
 import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
+import {Event } from '../events/entities/event.entity';
+
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
+import { COFFEE_BRANDS } from './coffees.constants';
+import { ConfigService } from '@nestjs/config'
+
 @Injectable()
 export class CoffeesService {
     constructor(
         @InjectRepository(Coffee)
         private readonly coffeeRepository: Repository<Coffee>,
         @InjectRepository(Flavor)
-        private readonly flavorRepository: Repository<Flavor>
-    ){}
+        private readonly flavorRepository: Repository<Flavor>,
+        private readonly connection: Connection,
+        private readonly configService: ConfigService
+        // @Inject(COFFEE_BRANDS) coffeeBrands: string[],
+    ){
+        // console.log(coffeeBrands);
+        // console.log('gettin data for config stuff ', this.configService.get<string>('DATABASE_HOST'));
+        console.log('gettin data for config stuff ', this.configService.get('database.host'));
+    }
     findAll(paginationQuery: PaginationQueryDto) {
         const {limit, offset } = paginationQuery
         return this.coffeeRepository.find(
@@ -67,6 +79,28 @@ export class CoffeesService {
         return this.coffeeRepository.remove(coffee)
     }
 
+    async recommendCoffee(coffee: Coffee) {
+        const queryRunner = this.connection.createQueryRunner();
+        await queryRunner.connect();
+        await queryRunner.startTransaction();
+        try {
+            coffee.recommendations++;
+            const recommendEvent = new Event();
+            recommendEvent.name = 'recommended coffee';
+            recommendEvent.type = 'coffee';
+            recommendEvent.payload = {coffeeId: coffee.id};
+            
+            await queryRunner.manager.save(coffee);
+            await queryRunner.manager.save(recommendEvent);
+
+            await queryRunner.commitTransaction();
+        } catch (e) {
+            console.log('e ', e);
+            await queryRunner.rollbackTransaction();
+        } finally {
+            await queryRunner.release();
+        }
+    }    
     private async preloadFlavorByName(name: string): Promise<Flavor> {
         const existingFlavor = await this.flavorRepository.findOne({name});
         if (existingFlavor) {
