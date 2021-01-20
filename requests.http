@@ -1,6 +1,7 @@
 ### list users
 GET http://localhost:3000/coffees
 Content-Type: application/json
+Authorization: asdlAAD433dssdlLLLLdsxa
 
 ### list users
 GET http://localhost:3000/coffees?offset=2&limit=2

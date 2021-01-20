@@ -1,4 +1,4 @@
-import { Body, Controller, Delete, Get, Param, Patch, Post, Query, UsePipes, ValidationPipe } from '@nestjs/common';
+import { Body, Controller, Delete, Get, Param, Patch, Post, Query, SetMetadata, UsePipes, ValidationPipe } from '@nestjs/common';
 import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee-dto';
 import { UpdateCoffeeDto } from './dto/update-coffee-dto';
@@ -9,6 +9,7 @@ export class CoffeesController {
     constructor(private readonly coffeesService: CoffeesService) {}
 
     // @UsePipes(ValidationPipe) // it can be added on a single method
+    @SetMetadata('isPublic', true)
     @Get()
     findAll(@Query() paginationQuery: PaginationQueryDto) {
         // const { limit, offset } = queries
