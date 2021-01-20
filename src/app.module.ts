@@ -6,6 +6,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoffeeRatingService } from './coffee-rating/coffee-rating.service';
 import { CoffeeRatingModule } from './coffee-rating/coffee-rating.module';
 import { ConfigModule } from '@nestjs/config'
+import { CommonModule } from './common/common.module';
 import * as Joi from '@hapi/joi'
 import appConfig from './config/app.config';
 @Module({
@@ -27,7 +28,7 @@ import appConfig from './config/app.config';
     database: process.env.DATABASE_NAME,
     autoLoadEntities: true,
     synchronize: true,
-  }), CoffeeRatingModule],
+  }), CoffeeRatingModule, CommonModule],
   controllers: [AppController],
   providers: [AppService, CoffeeRatingService],
 })

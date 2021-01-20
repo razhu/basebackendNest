@@ -3,13 +3,16 @@ import { CoffeesService } from './coffees.service';
 import { CreateCoffeeDto } from './dto/create-coffee-dto';
 import { UpdateCoffeeDto } from './dto/update-coffee-dto';
 import { PaginationQueryDto } from '../common/dto/pagination-query.dto';
+import { Public } from 'src/common/decorators/public.decorator';
 @UsePipes(ValidationPipe)
 @Controller('coffees')
 export class CoffeesController {
     constructor(private readonly coffeesService: CoffeesService) {}
 
     // @UsePipes(ValidationPipe) // it can be added on a single method
-    @SetMetadata('isPublic', true)
+    // @SetMetadata('isPublic', true) // its ok but will be using customed annotation
+
+    @Public()
     @Get()
     findAll(@Query() paginationQuery: PaginationQueryDto) {
         // const { limit, offset } = queries

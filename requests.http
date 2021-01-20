@@ -1,15 +1,19 @@
 ### list users
 GET http://localhost:3000/coffees
 Content-Type: application/json
-Authorization: asdlAAD433dssdlLLLLdsxa
+Authorization: asdlAAD433dssdlLLLLdsx
 
 ### list users
 GET http://localhost:3000/coffees?offset=2&limit=2
 Content-Type: application/json
 ### list user
-GET http://localhost:3000/coffees/-7
+GET http://localhost:3000/coffees/1
 Content-Type: application/json
-### nuevo
+Authorization: asdlAAD433dssdlLLLLdsxa
+
+
+
+###
 POST http://localhost:3000/coffees
 Content-Type: application/json
 
