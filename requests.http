@@ -7,7 +7,7 @@ Authorization: asdlAAD433dssdlLLLLdsx
 GET http://localhost:3000/coffees?offset=2&limit=2
 Content-Type: application/json
 ### list user
-GET http://localhost:3000/coffees/6
+GET http://localhost:3000/coffees/abc
 Content-Type: application/json
 Authorization: asdlAAD433dssdlLLLLdsxa
 
