@@ -13,7 +13,7 @@ const createMockRepository = <T = any>(): MockRepository<T> => ({
 
 describe('CoffeesService', () => {
    let service: CoffeesService;
-   let coffeREpository:
+  //  let coffeRepository:
 
    beforeEach(async () => {
      const module: TestingModule = await Test.createTestingModule({
@@ -32,21 +32,21 @@ describe('CoffeesService', () => {
      expect(service).toBeDefined();
    });
   
-   describe('findOne', () => {
-    describe('when coffee with ID exists', () => {
-      it('should return the coffee object', async () => {
-        const coffeeId = '1';
-        const expectedCoffee = {}
+  //  describe('findOne', () => {
+  //   describe('when coffee with ID exists', () => {
+  //     it('should return the coffee object', async () => {
+  //       const coffeeId = '1';
+  //       const expectedCoffee = {}
 
-        const coffee = await service.findOne(coffeeId);
-        expect(coffee).toEqual(expectedCoffee);
-      })
-    })
-    describe('otherwise', () => {
-      it('should throw "NotFoundException"', async () => {
+  //       const coffee = await service.findOne(coffeeId);
+  //       expect(coffee).toEqual(expectedCoffee);
+  //     })
+  //   })
+  //   describe('otherwise', () => {
+  //     it('should throw "NotFoundException"', async () => {
         
-      })
-    })    
-  })
+  //     })
+  //   })    
+  // })
 });
 
